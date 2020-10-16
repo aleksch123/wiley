@@ -1,4 +1,4 @@
-package ru.qa.wl.tests;
+package ru.qa.wl.tests.ui;
 
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;

@@ -4,7 +4,7 @@
 
     <test name="YandexTest">
         <classes>
-            <class name="ru.qa.wl.tests.UITests"/>
+            <class name="ru.qa.wl.tests.ui.UITests"/>
 
         </classes>
     </test>

@@ -1,15 +1,11 @@
 package ru.qa.wl.pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.*;
-
-import static ru.qa.wl.tests.TestBase.app;
 
 public class MainPage {
 
@@ -73,9 +69,10 @@ public MainPage(WebDriver wd) {
   return suggestion;
   }
 
-  public List<String> getResultForSearch(String searchCriteria) {
+  public List<String> getResultForSearch(String searchCriteria) throws InterruptedException {
     List<String> titles = new ArrayList<>();
     searchField.sendKeys(searchCriteria);
+    Thread.sleep(500);
     searchButton.click();
     for (WebElement title:productTitles) {
       titles.add(title.getText());

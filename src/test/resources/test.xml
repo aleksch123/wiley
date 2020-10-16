@@ -2,10 +2,10 @@
 
 <suite name="Suite1" verbose="1" >
 
-    <test name="YandexTest">
+    <test name="Tests">
         <classes>
             <class name="ru.qa.wl.tests.ui.UITests"/>
-
+            <class name="ru.qa.wl.tests.api.ApiTests"/>
         </classes>
     </test>
 </suite>

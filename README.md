@@ -1,6 +1,5 @@
 Part 1. Java and Selenium WebDriver       
-Develop automation tests using Java and Selenium WebDriver. Please use any patterns, selectors, approaches you like. 
-
+Develop automation tests using Java and Selenium WebDriver.
 The main page to start with: https://www.wiley.com/en-us
 1.	Test needs to open the page and check items under Who We Serve sub-head
 •	there should be 11 items under resources sub-header
@@ -19,8 +18,7 @@ The main page to start with: https://www.wiley.com/en-us
 •	13 items are displayed under “Subjects” on the left side of the screen and the texts are: "Information & Library Science",    "Education & Public Policy",  "K-12 General",  "Higher Education General",   "Vocational Technology",   "Conflict Resolution & Mediation (School settings)",   "Curriculum Tools- General",   "Special Educational Needs",   "Theory of Education",  "Education Special Topics",  "Educational Research & Statistics",  "Literacy & Reading",  "Classroom Management"
 
 Part 2. API   
-Develop automation tests to check status and response using Java and any library of your choice.  
- 
+Develop automation tests to check status and response 
 1.	Check that GET call to 
 https://www.wiley.com/en-us/search/autocomplete/comp_00001H9J?term=Java 
 returns response with at least these parts:

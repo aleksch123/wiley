@@ -56,7 +56,7 @@ public class UITests extends TestBase {
                     assertEquals("ADDTOCART", buttons.get(key));
                 }
                 if (key.equals("OBook")) {
-                    assertEquals("ViewonWileyOnlineLibrary", buttons.get(key));
+                    assertEquals("VIEWONWILEYONLINELIBRARY", buttons.get(key));
                 }
             }
         }

@@ -16,6 +16,10 @@ public class MainPage {
 
     protected WebDriver wd;
 
+    String idLocator ="//section[@class='product-item'][%s]//div[contains(@class,'tab-pane')]";
+    String eBookLocator ="//div[@id='%s']//button[@class='small-button add-to-cart-button js-add-to-cart']";
+    String oBookLocator ="//div[@id='%s']//a[@class='small-button learn-more-button']";
+
     @FindBy(xpath = "//a[@class='who-we-serve-block-title']")
     private List<WebElement> whoWeServe;
 
@@ -90,27 +94,22 @@ public class MainPage {
     }
 
     public Map<String, ?> getProductButton(int itemNum) {
+
         Map captions = new HashMap();
         String caption = "";
         String key = "";
-
-        List<WebElement> idList = wd.findElements(By.xpath("//section[@class='product-item'][" + itemNum + "]//div[contains(@class,'tab-pane')]"));
+        List<WebElement> idList = wd.findElements(By.xpath(String.format(idLocator,itemNum)));
         for (WebElement element : idList) {
             String id = element.getAttribute("id");
             if (id.contains("E-Book") || id.contains("Print")) {
                 try {
-                    caption = wd.findElement(By.xpath("//div[@id='" + id + "']//button[@class='small-button add-to-cart-button js-add-to-cart']"))
-                            .getAttribute("innerText")
-                            .toUpperCase()
-                            .replaceAll("[^a-zA-Z]", "");
+                    caption = getCaption(eBookLocator,id);
                 } catch (Exception e) {
                     caption = "N/A";
                 }
             } else if (id.contains("O-Book")) {
                 try {
-                    caption = wd.findElement(By.xpath("//div[@id='" + id + "']//a[@class='small-button learn-more-button']"))
-                            .getAttribute("innerText")
-                            .replaceAll("[^a-zA-Z]", "");
+                    caption = getCaption(oBookLocator,id);
                 } catch (Exception e) {
                     caption = "N/A";
                 }
@@ -120,5 +119,14 @@ public class MainPage {
         }
 
         return captions;
+    }
+
+    private String getCaption(String locator,String id) {
+        String caption;
+        caption = wd.findElement(By.xpath(String.format(locator,id)))
+                .getAttribute("innerText")
+                .toUpperCase()
+                .replaceAll("[^a-zA-Z]", "");
+        return caption;
     }
 }

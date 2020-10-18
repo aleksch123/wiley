@@ -52,7 +52,7 @@ public class UITests extends TestBase {
             Set keys = buttons.keySet();
             for (Iterator i = keys.iterator(); i.hasNext(); ) {
                 String key = (String) i.next();
-                if ((key.equals("EBook") || key.equals("Print")) && !buttons.get(key).equals("N/A")) {
+                if ((key.equals("EBook") || key.equals("Print")) && !buttons.get(key).equals("PRODUCTNOTAVAILABLEFORPURCHASE")) {
                     assertEquals("ADDTOCART", buttons.get(key));
                 }
                 if (key.equals("OBook")) {

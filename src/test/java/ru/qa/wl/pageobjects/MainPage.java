@@ -19,6 +19,7 @@ public class MainPage {
     String idLocator ="//section[@class='product-item'][%s]//div[contains(@class,'tab-pane')]";
     String eBookLocator ="//div[@id='%s']//button[@class='small-button add-to-cart-button js-add-to-cart']";
     String oBookLocator ="//div[@id='%s']//a[@class='small-button learn-more-button']";
+    String naLocator ="//div[@id='%s']//span[@class='pr-not-available']";
 
     @FindBy(xpath = "//a[@class='who-we-serve-block-title']")
     private List<WebElement> whoWeServe;
@@ -105,13 +106,17 @@ public class MainPage {
                 try {
                     caption = getCaption(eBookLocator,id);
                 } catch (Exception e) {
-                    caption = "N/A";
+                  try {
+                      caption = getCaption(naLocator, id);
+                  }catch (Exception e1){
+                      caption = "NOT EXISTED";
+                  }
                 }
             } else if (id.contains("O-Book")) {
                 try {
-                    caption = getCaption(oBookLocator,id);
-                } catch (Exception e) {
-                    caption = "N/A";
+                    caption = getCaption(oBookLocator, id);
+                }catch (Exception e){
+                    caption = "NOT EXISTED";
                 }
             }
             key = id.replaceAll("[^a-zA-Z]", "");

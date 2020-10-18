@@ -9,6 +9,7 @@ import ru.yandex.qatools.allure.annotations.Stories;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class ApiTests {
     @Features("ApiTests")
@@ -47,6 +48,6 @@ public class ApiTests {
                 .then()
                 .statusCode(200)
                 .header("content-type", "image/png")
-                .header("content-length", "8090");
+                .header("content-length", notNullValue());
     }
 }

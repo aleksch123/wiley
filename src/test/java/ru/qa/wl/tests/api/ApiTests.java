@@ -10,21 +10,23 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static ru.qa.wl.tests.api.Constants.Servers.*;
 
 public class ApiTests {
     @Features("ApiTests")
     @Stories("Verify response values")
     @Test
     public void getFieldInResponseWithValueAssertion() {
+
         Response response = given().log().uri()
-                .when().get("https://www.wiley.com/en-us/search/autocomplete/comp_00001H9J?term=Java")
+                .when().get(SEARCH_URL+ "Java" )
                 .then()
                 .statusCode(200)
                 .extract().response();
         List<String> suggestions = response.path("suggestions.findAll {it.term.contains('java')}");
-        Assert.assertEquals(4, suggestions.size());
+        Assert.assertEquals( suggestions.size(),4);
         List<String> titles = response.path("pages.findAll {it.title.contains('Wiley')}");
-        Assert.assertEquals(4, titles.size());
+        Assert.assertEquals( titles.size(),4);
 
     }
     @Features("ApiTests")
@@ -33,7 +35,7 @@ public class ApiTests {
     public void validateJsonSchema() {
 
         given().log().uri()
-                .when().get("https://httpbin.org/delay/5")
+                .when().get(DELAY_URL)
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("jsonSchema.json")).log().body();
@@ -44,7 +46,7 @@ public class ApiTests {
     public void validateImageContent() {
 
         given().log().uri()
-                .when().get("https://httpbin.org/image/png")
+                .when().get(IMAGE_URL)
                 .then()
                 .statusCode(200)
                 .header("content-type", "image/png")

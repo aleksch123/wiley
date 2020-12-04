@@ -33,10 +33,7 @@ public class EducationPage {
     public List<String> getLeftPanelItems() {
 
         List<String> items = new ArrayList<>();
-
-        for (WebElement element : panelItems) {
-            items.add(element.getText());
-        }
+        panelItems.stream().forEach(v ->items.add(v.getText()));
         return items;
     }
 }

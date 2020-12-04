@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainPage {
 
@@ -56,10 +57,7 @@ public class MainPage {
 
     public List<String> getWhoWeServeList() {
         List<String> whoWeServeTitles = new ArrayList<>();
-        for (WebElement element : whoWeServe) {
-            whoWeServeTitles.add(element.getText());
-
-        }
+        whoWeServe.stream().forEach(v -> whoWeServeTitles.add(v.getText()));
         return whoWeServeTitles;
     }
 
@@ -77,9 +75,8 @@ public class MainPage {
         List<String> suggestion = new ArrayList<>();
         searchField.sendKeys(searchCriteria);
         Thread.sleep(500);
-        for (WebElement element : suggestions) {
-            suggestion.add(element.getText());
-        }
+        suggestions.stream().forEach(v ->suggestion.add(v.getText()) );
+
         return suggestion;
     }
 
@@ -88,9 +85,7 @@ public class MainPage {
         searchField.sendKeys(searchCriteria);
         Thread.sleep(500);
         searchButton.click();
-        for (WebElement title : productTitles) {
-            titles.add(title.getText());
-        }
+        productTitles.stream().forEach(v -> titles.add(v.getText()));
         return titles;
     }
 

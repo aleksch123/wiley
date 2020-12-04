@@ -27,13 +27,12 @@ public class UITests extends TestBase {
     @Features("UITest")
     @Stories("Verify that suggestions meet search criteria ")
     @Test
-    public void searchSuggestionTest() throws IOException, InterruptedException {
+    public void searchSuggestionTest() throws  InterruptedException {
 
         String searchCriteria = "Java";
         List<String> suggestions = app.mainPage().getSuggestionsForSearch(searchCriteria);
-        for (String item : suggestions) {
-            assertEquals(item, searchCriteria.toLowerCase());
-        }
+        suggestions.stream().forEach(v -> assertEquals(v,searchCriteria.toLowerCase()));
+
     }
 
     @Features("UITest")

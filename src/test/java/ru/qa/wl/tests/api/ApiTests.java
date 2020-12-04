@@ -23,6 +23,7 @@ public class ApiTests {
                 .then()
                 .statusCode(200)
                 .extract().response();
+
         List<String> suggestions = response.path("suggestions.findAll {it.term.contains('java')}");
         Assert.assertEquals( suggestions.size(),4);
         List<String> titles = response.path("pages.findAll {it.title.contains('Wiley')}");
